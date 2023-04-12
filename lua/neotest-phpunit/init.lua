@@ -84,8 +84,10 @@ function NeotestAdapter.build_spec(args)
     })
   end
 
+  local strippedCommand = table.concat(command, " ")
+  strippedCommand = strippedCommand:gsub("/Users/phaberest/code/backend.straycats.it/", "")
   return {
-    command = table.concat(command, " "),
+    command = strippedCommand,
     context = {
       results_path = results_path,
     },
