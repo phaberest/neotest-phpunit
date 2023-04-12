@@ -58,7 +58,9 @@ function NeotestAdapter.build_spec(args)
 
   local binary = "phpunit"
   -- If laravel, then use artisan test for nice output
-  if vim.fn.filereadable("artisan") then
+  if vim.fn.filereadable("vendor/bin/sail") then
+    binary = "vendor/bin/sail artisan test"
+  elseif vim.fn.filereadable("artisan") then
     binary = "php artisan test"
   elseif vim.fn.filereadable("vendor/bin/phpunit") then
     binary = "vendor/bin/phpunit"
